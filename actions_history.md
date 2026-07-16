@@ -152,7 +152,7 @@ Integrated everything into:
 3. **Glossy 3D Glass Rings & Capsules**:
    Designed and placed floating glowing SVG torus shapes (pink and blue glass-like rings) and capsule shapes with reflective sheens in the background container, complete with micro-float animations.
 
-4. **Card Glassmorphism Update**:
+4. **Card Glassmorphic Update**:
    Refined the `.glass` class in `src/index.css` to feature high backdrop-blur (`20px`), subtle transparency (`rgba(14, 17, 42, 0.45)`), thin borders, and custom inner glows for maximum visual fidelity to the mockup.
 
 ---
@@ -169,3 +169,20 @@ Integrated everything into:
 
 3. **Alternating Timeline Columns Layout**:
    Configured timeline columns in `Experience.tsx` so that even-numbered items in 1-based order (2nd card PT Vidi Vici, 4th card PT Lyto) render on the right half of the timeline, and odd-numbered items (1st card PT Heinz, 3rd card PT Shippindo, 5th card PT Nutrifood) render on the left half. Correspondingly synced the color themes (cyan accents for left side cards, violet accents for right side cards).
+
+---
+
+## Phase 9: GitHub Pages Subfolder Path Adjustments
+
+1. **Vite Base URL Configuration**:
+   Configured `base: '/portfolio/'` in `vite.config.ts` to ensure Vite resolves bundled assets relative to the repository subpath.
+
+2. **Static Asset Dynamic Routing**:
+   Updated `profile_avatar.png` references in [src/components/Hero.tsx](file:///c:/xampp/portofolio/src/components/Hero.tsx) to use dynamic base URL variable prefixing:
+   ```typescript
+   src={`${import.meta.env.BASE_URL}profile_avatar.png`}
+   ```
+   This keeps public directory assets loading properly under custom nested subpath hosting environments.
+
+3. **HTML Favicon Relative Anchoring**:
+   Updated the link tag in [index.html](file:///c:/xampp/portofolio/index.html) to reference favicon.svg using a relative location target (`favicon.svg` instead of absolute root-level `/favicon.svg`), guaranteeing error-free loading on subpath servers.

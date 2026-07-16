@@ -104,7 +104,7 @@ export default function Hero() {
               {/* Main container */}
               <div className="relative w-full h-full rounded-3xl overflow-hidden glass p-3 flex items-center justify-center">
                 <img
-                  src="/profile_avatar.png"
+                  src={`${import.meta.env.BASE_URL}profile_avatar.png`}
                   alt="Nurul Fikri Falindi"
                   className="w-full h-full object-cover rounded-2xl shadow-inner border border-white/10"
                 />
