@@ -45,10 +45,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="#home" className="flex items-center space-x-2 group">
-              <span className="h-8 w-8 rounded-lg bg-gradient-to-r from-emerald-700 to-amber-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
-                F
-              </span>
+            <a href="#home" className="flex items-center space-x-3 group">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="Fikri Falindi"
+                className="h-8 w-auto rounded-lg shadow-sm border border-stone-200/50 group-hover:scale-105 transition-transform duration-250"
+              />
               <span className="text-stone-800 font-semibold text-lg tracking-wider group-hover:text-emerald-700 transition-colors">
                 FIKRI FALINDI
               </span>

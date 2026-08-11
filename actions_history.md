@@ -207,10 +207,24 @@ Integrated everything into:
 ## Phase 12: New CV Import Integration
 
 1. **Experience Nested Bullet points**:
-   Modified [src/components/Experience.tsx](file:///c:/xampp/portofolio/src/components/Experience.tsx) to support sub-timeline entries. Included detailed listing of 35+ enterprise applications segmented across 5 core business pillars (Supply Chain, Finance, Commercial, Manufacturing, and Enterprise Workflow) for PT Heinz ABC Indonesia.
+   Modified [src/components/Experience.tsx](file:///c:/xampp/portofolio/src/components/Experience.tsx) to support sub-timeline entries. Included detailed listing of 35+ enterprise applications.
 
 2. **Skills Matrix Refresh**:
-   Updated [src/components/Skills.tsx](file:///c:/xampp/portofolio/src/components/Skills.tsx) to sync categories with the new CV skills parameters (Programming & Frameworks, Database & Infrastructure, Core Competencies).
+   Updated [src/components/Skills.tsx](file:///c:/xampp/portofolio/src/components/Skills.tsx) to sync categories with the new CV skills parameters.
 
 3. **Fluency Upgrade & Locations**:
-   Updated [src/components/EducationAndLanguages.tsx](file:///c:/xampp/portofolio/src/components/EducationAndLanguages.tsx) to upgrade English proficiency to "Advanced (90%)" and added location tags next to educational milestones.
+   Updated [src/components/EducationAndLanguages.tsx](file:///c:/xampp/portofolio/src/components/EducationAndLanguages.tsx) to upgrade English proficiency and added locations.
+
+---
+
+## Phase 13: Dedicated Tabbed Portfolio Component
+
+1. **Experience Timeline Simplification**:
+   Reverted [src/components/Experience.tsx](file:///c:/xampp/portofolio/src/components/Experience.tsx) timeline cards back to simple string arrays to avoid cluttering the timeline.
+
+2. **New Tabbed Portfolio Component**:
+   Created [src/components/Portfolio.tsx](file:///c:/xampp/portofolio/src/components/Portfolio.tsx) displaying the 35+ Heinz applications in 5 tabbed divisional groups (Supply Chain, Finance, Commercial, Manufacturing, Admin).
+
+3. **Routing Integration**:
+   - Mounted `Portfolio` below the `Experience` section in [src/App.tsx](file:///c:/xampp/portofolio/src/App.tsx).
+   - Added a `Portfolio` nav item inside [src/components/Navbar.tsx](file:///c:/xampp/portofolio/src/components/Navbar.tsx).
