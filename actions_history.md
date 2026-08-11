@@ -228,3 +228,16 @@ Integrated everything into:
 3. **Routing Integration**:
    - Mounted `Portfolio` below the `Experience` section in [src/App.tsx](file:///c:/xampp/portofolio/src/App.tsx).
    - Added a `Portfolio` nav item inside [src/components/Navbar.tsx](file:///c:/xampp/portofolio/src/components/Navbar.tsx).
+
+---
+
+## Phase 14: Personal Logo & Tab Icon Integration
+
+1. **Logo Placements**:
+   Copied and integrated the user's personal double-F monogram logo as [public/logo.png](file:///c:/xampp/portofolio/public/logo.png). Re-styled [src/components/Navbar.tsx](file:///c:/xampp/portofolio/src/components/Navbar.tsx) to display the image with responsive bounds.
+
+2. **Favicon Rendering**:
+   Copied the logo to [public/favicon.png](file:///c:/xampp/portofolio/public/favicon.png) and configured [index.html](file:///c:/xampp/portofolio/index.html) to link the browser tab icon to the new png format.
+
+3. **Color-Matched Monogram Refinement**:
+   Re-generated the monogram logo using the `generate_image` tool to replace the cyan background with a transparent/off-white background and recolor the double-F lines with the forest green and amber gold gradient, perfectly matching the Warm Minimalist color palette.
