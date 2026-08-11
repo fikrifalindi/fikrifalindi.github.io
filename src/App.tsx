@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Profile from './components/Profile';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import EducationAndLanguages from './components/EducationAndLanguages';
-import References from './components/References';
-import Contact from './components/Contact';
+import { IntroCard, ProfileCard } from './components/Hero';
+import { AboutCard, MetricsCard } from './components/Profile';
+import SkillsCard from './components/Skills';
+import ExperienceCard from './components/Experience';
+import EducationAndLanguagesCard from './components/EducationAndLanguages';
+import ReferencesCard from './components/References';
+import ContactCard from './components/Contact';
 
 export default function App() {
   return (
@@ -31,7 +31,7 @@ export default function App() {
           <path d="M-150,950 C250,850 550,1150 850,900 C1150,650 1350,1050 1850,950" />
         </svg>
 
-        {/* Floating 3D Glossy Ring (Torus) - Top Left */}
+        {/* Floating 3D Torus Ring - Top Left */}
         <svg className="absolute top-[12%] left-[3%] w-56 h-56 opacity-30 animate-float-slow" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="ringGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -43,7 +43,7 @@ export default function App() {
           <path d="M 100 20 A 80 80 0 1 0 100 180 A 80 80 0 1 0 100 20 Z M 100 50 A 50 50 0 1 1 100 150 A 50 50 0 1 1 100 50 Z" fill="url(#ringGrad1)" filter="drop-shadow(0px 15px 20px rgba(236,72,153,0.35))" />
         </svg>
 
-        {/* Floating 3D Glossy Ring (Torus) - Bottom Right */}
+        {/* Floating 3D Torus Ring - Bottom Right */}
         <svg className="absolute bottom-[15%] right-[2%] w-64 h-64 opacity-25 animate-float-slow" style={{ animationDelay: '3s' }} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="ringGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -84,15 +84,34 @@ export default function App() {
       {/* Universal Floating Navbar */}
       <Navbar />
 
-      {/* Main Sections */}
-      <main className="relative z-10">
-        <Hero />
-        <Profile />
-        <Skills />
-        <Experience />
-        <EducationAndLanguages />
-        <References />
-        <Contact />
+      {/* Main Bento Grid layout */}
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
+        
+        {/* Row 1: Intro Card (8) & Portrait Card (4) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <IntroCard />
+          <ProfileCard />
+        </div>
+
+        {/* Row 2: About Me (5) & Professional Metrics (3) & Reference (4) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <AboutCard />
+          <MetricsCard />
+          <ReferencesCard />
+        </div>
+
+        {/* Row 3: Skills & Competencies (8) & Credentials (4) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <SkillsCard />
+          <EducationAndLanguagesCard />
+        </div>
+
+        {/* Row 4: Timeline Experience (7) & Contact message form (5) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <ExperienceCard />
+          <ContactCard />
+        </div>
+
       </main>
     </div>
   );
