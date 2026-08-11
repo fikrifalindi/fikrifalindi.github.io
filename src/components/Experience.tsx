@@ -2,12 +2,18 @@ import { useState, type MouseEvent } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface SubPillarItem {
+  title: string;
+  items: string[];
+}
+
 interface ExperienceItem {
   id: number;
   company: string;
   role: string;
   period: string;
-  points: string[];
+  location: string;
+  points: (string | SubPillarItem)[];
   isCurrent?: boolean;
 }
 
@@ -18,13 +24,24 @@ export default function Experience() {
       company: "PT Heinz ABC Indonesia",
       role: "IT System Development Senior Analyst",
       period: "2020 - Present",
+      location: "Jakarta, Indonesia",
       isCurrent: true,
       points: [
-        "Direct the full software development lifecycle (SDLC) for proprietary in-house applications, developing project timelines and guiding a high-performing team from initial concept to delivery.",
-        "Serve as a lead developer for critical modules using Laravel, ReactJS, ASP, and Power Platform, stepping in during resource constraints to ensure all project milestones are met.",
-        "Manage end-to-end deployment pipelines, ensuring the seamless transition of production-ready code to server environments.",
-        "Oversee comprehensive server administration, including proactive performance monitoring, resource optimization, and the enforcement of security and compliance protocols.",
-        "Administer enterprise-grade database systems, ensuring data integrity, high availability, and optimal query performance."
+        "Direct full software development lifecycle (SDLC) and deployment pipelines for a portfolio of 35+ proprietary enterprise applications spanning Supply Chain, Logistics, Plant Operations, Finance, and Commercial functions.",
+        "Served as Lead Developer for critical modules using Laravel, ReactJS, ASP, and Power Platform, stepping in during resource constraints to guarantee 100% on-time project milestone delivery.",
+        {
+          title: "Architected and managed 35+ enterprise applications across 5 core business pillars:",
+          items: [
+            "Supply Chain, Logistics & Warehouse: ASN (Auto Shipping Notice), Barcode Pallet System, Freight System (FC3), Optimus Logistics Vendor Appointment, Receiver Ticket Print.",
+            "Finance, Procurement & Accounting: Advance & Exception Payment, Extend Invoice ToP Customer, Bank Transfer Encryption, Blackline Data Export Wizard, Closing Checklist, Exchange Rate Automation, Import of Goods Notification, MJ Workflow, Sentosa System, Vendor SRM.",
+            "Commercial & Sales Operations: B2B RMS, OOH Workflow, Optimus Sales Recognition, Export System, Credit Note (CN) Online (Indonesia & SSEA).",
+            "Manufacturing, Plant Operations & QC: Line Performance System, Manufacturing Recording, Item Master Automation, Sparepart Management (CMMS), Customer Product Complaint, BAPBS HB/DC + Plant, Copacker Claim, Import Claim, SJPBB (Sales of Scrap), Vendor Master Automation, PO Contract & Workflow.",
+            "Enterprise Workflow & Administration: User Access Request, Indonesia Webcenter."
+          ]
+        },
+        "Managed business continuity, legacy data transitions, and structured decommissioning of multiple internal applications following a major corporate ERP migration.",
+        "Oversee comprehensive server administration and proactive performance monitoring, optimizing server resource utilization, enforcing security protocols, and maintaining maximum uptime.",
+        "Administer enterprise-grade database systems, enforcing data integrity, query performance optimization, and strict security compliance across all active platforms."
       ]
     },
     {
@@ -32,23 +49,25 @@ export default function Experience() {
       company: "PT Vidi Vici Digital (jendela360.com)",
       role: "Web Developer",
       period: "2016 - 2019",
+      location: "Jakarta, Indonesia",
       points: [
-        "Engineered the core web platform using Laravel and ReactJS, delivering a seamless, high-performance user experience by managing both front-end and back-end development.",
-        "Architected technical SEO frameworks within the site structure and metadata to significantly increase search engine visibility and organic reach.",
-        "Spearheaded UI/UX brainstorming and design implementation, creating visually engaging and intuitive interfaces specifically aimed at maximizing user retention.",
-        "Developed and optimized complex database schemas to support high-traffic real estate listings."
+        "Engineered core web platform features using Laravel and ReactJS, delivering seamless front-end and back-end architectures for high-traffic real estate listings.",
+        "Architected technical SEO frameworks within site structure and metadata, significantly increasing search engine visibility and organic reach.",
+        "Spearheaded UI/UX brainstorming sessions and design implementation, creating intuitive interfaces aimed at maximizing user retention.",
+        "Designed and optimized complex database schemas to support high-traffic real estate listings and efficient data management."
       ]
     },
     {
       id: 3,
       company: "PT Shippindo Teknologi Logistik (shipper.id)",
-      role: "Web Backend Developer (Bootcamp)",
+      role: "Web Backend Developer (Bootcamp Project)",
       period: "Oct '16 - Nov '16",
+      location: "Jakarta, Indonesia",
       points: [
         "Developed a custom Content Management System (CMS) using CodeIgniter to dynamically manage and update mobile application content, ensuring a streamlined administrative workflow.",
         "Engineered administrative interfaces that allowed for real-time content synchronization between the web-based CMS and the mobile app environment.",
-        "Collaborated within an agile development team to build and refine core website features, focusing on modular code.",
-        "Optimized back-end logic to handle content delivery, ensuring high availability and fast response times."
+        "Collaborated within an agile development team to build and refine core website features, focusing on modular code and cross-platform compatibility.",
+        "Optimized back-end logic to handle content delivery, ensuring high availability and fast response times for mobile end-users."
       ]
     },
     {
@@ -56,9 +75,10 @@ export default function Experience() {
       company: "PT Lyto Datarindo Fortuna",
       role: "IT Support",
       period: "2011 - 2012",
+      location: "Jakarta, Indonesia",
       points: [
-        "Maintained high-availability game servers through rigorous daily monitoring and scheduled maintenance protocols to ensure an optimal gaming experience for users.",
-        "Coordinated on-site technical support for major company events, handling everything from hardware assembly to complex network troubleshooting."
+        "Maintained high-availability game servers through daily monitoring and scheduled maintenance protocols to ensure an optimal gaming experience and minimize downtime.",
+        "Coordinated on-site technical support for major company events, handling everything from hardware assembly to complex network troubleshooting under tight deadlines."
       ]
     },
     {
@@ -66,10 +86,11 @@ export default function Experience() {
       company: "PT Nutrifood Indonesia",
       role: "IT Support (Internship)",
       period: "Oct '09 - Dec '09",
+      location: "Jakarta, Indonesia",
       points: [
         "Diagnosed and resolved hardware, software, and network connectivity issues for internal staff to maintain high operational uptime.",
-        "Optimized meeting room infrastructure, configuring audiovisual hardware and stable network connections.",
-        "Supported internal network administration, including LAN troubleshooting and workstation deployment."
+        "Optimized meeting room infrastructure, configuring audiovisual hardware and stable network connections to ensure seamless high-stakes online conferences.",
+        "Supported internal network administration, including LAN troubleshooting and workstation deployment for new team members."
       ]
     }
   ];
@@ -144,7 +165,7 @@ export default function Experience() {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="inline-flex items-center text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full mb-2 uppercase tracking-wide">
-                              {exp.period}
+                              {exp.period} | {exp.location}
                             </span>
                             <h3 className="text-lg font-bold text-stone-900 group-hover:text-emerald-700 transition-colors">
                               {exp.company}
@@ -166,13 +187,42 @@ export default function Experience() {
                               transition={{ duration: 0.3, ease: 'easeInOut' }}
                               className="overflow-hidden"
                             >
-                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
-                                {exp.points.map((pt, pIdx) => (
-                                  <li key={pIdx} className="flex items-start">
-                                    <span className="mr-2 text-emerald-700 font-bold">•</span>
-                                    <span>{pt}</span>
-                                  </li>
-                                ))}
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-3.5 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => {
+                                  if (typeof pt === 'string') {
+                                    return (
+                                      <li key={pIdx} className="flex items-start">
+                                        <span className="mr-2 text-emerald-700 font-bold shrink-0">•</span>
+                                        <span>{pt}</span>
+                                      </li>
+                                    );
+                                  } else {
+                                    return (
+                                      <li key={pIdx} className="space-y-2 mt-2 pt-2 border-t border-dashed border-stone-200/80">
+                                        <div className="font-bold text-stone-850 flex items-center">
+                                          <span className="mr-2 text-emerald-700">•</span>
+                                          {pt.title}
+                                        </div>
+                                        <ul className="pl-5 space-y-1.5">
+                                          {pt.items.map((sub, sIdx) => {
+                                            const parts = sub.split(':');
+                                            const prefix = parts[0];
+                                            const rest = parts.slice(1).join(':');
+                                            return (
+                                              <li key={sIdx} className="flex items-start">
+                                                <span className="mr-2 text-amber-600 font-bold shrink-0">○</span>
+                                                <span className="text-stone-600">
+                                                  <strong className="text-stone-800 font-semibold">{prefix}:</strong>
+                                                  {rest}
+                                                </span>
+                                              </li>
+                                            );
+                                          })}
+                                        </ul>
+                                      </li>
+                                    );
+                                  }
+                                })}
                               </ul>
                             </motion.div>
                           )}
@@ -192,7 +242,7 @@ export default function Experience() {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="inline-flex items-center text-[10px] font-bold text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full mb-2 uppercase tracking-wide">
-                              {exp.period}
+                              {exp.period} | {exp.location}
                             </span>
                             <h3 className="text-lg font-bold text-stone-900 group-hover:text-amber-700 transition-colors">
                               {exp.company}
@@ -214,13 +264,42 @@ export default function Experience() {
                               transition={{ duration: 0.3, ease: 'easeInOut' }}
                               className="overflow-hidden"
                             >
-                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
-                                {exp.points.map((pt, pIdx) => (
-                                  <li key={pIdx} className="flex items-start">
-                                    <span className="mr-2 text-amber-700 font-bold">•</span>
-                                    <span>{pt}</span>
-                                  </li>
-                                ))}
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-3.5 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => {
+                                  if (typeof pt === 'string') {
+                                    return (
+                                      <li key={pIdx} className="flex items-start">
+                                        <span className="mr-2 text-amber-700 font-bold shrink-0">•</span>
+                                        <span>{pt}</span>
+                                      </li>
+                                    );
+                                  } else {
+                                    return (
+                                      <li key={pIdx} className="space-y-2 mt-2 pt-2 border-t border-dashed border-stone-200/80">
+                                        <div className="font-bold text-stone-850 flex items-center">
+                                          <span className="mr-2 text-amber-700">•</span>
+                                          {pt.title}
+                                        </div>
+                                        <ul className="pl-5 space-y-1.5">
+                                          {pt.items.map((sub, sIdx) => {
+                                            const parts = sub.split(':');
+                                            const prefix = parts[0];
+                                            const rest = parts.slice(1).join(':');
+                                            return (
+                                              <li key={sIdx} className="flex items-start">
+                                                <span className="mr-2 text-amber-600 font-bold shrink-0">○</span>
+                                                <span className="text-stone-600">
+                                                  <strong className="text-stone-800 font-semibold">{prefix}:</strong>
+                                                  {rest}
+                                                </span>
+                                              </li>
+                                            );
+                                          })}
+                                        </ul>
+                                      </li>
+                                    );
+                                  }
+                                })}
                               </ul>
                             </motion.div>
                           )}

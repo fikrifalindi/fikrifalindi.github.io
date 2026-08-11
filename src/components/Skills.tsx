@@ -15,33 +15,38 @@ interface SkillCategory {
 export default function Skills() {
   const categories: SkillCategory[] = [
     {
-      title: "Software Development",
+      title: "Programming & Frameworks",
       icon: <Code2 className="h-5 w-5 text-emerald-700" />,
       skills: [
         { name: "Laravel", level: "Expert", percentage: 95 },
         { name: "ReactJS", level: "Advanced", percentage: 90 },
         { name: "ASP", level: "Advanced", percentage: 85 },
-        { name: "TypeScript / JS", level: "Advanced", percentage: 88 },
         { name: "Power Platform", level: "Advanced", percentage: 82 },
+        { name: "PHP", level: "Expert", percentage: 92 },
+        { name: "JavaScript", level: "Advanced", percentage: 90 },
+        { name: "HTML / CSS", level: "Expert", percentage: 95 },
+        { name: "CodeIgniter", level: "Advanced", percentage: 85 },
       ],
     },
     {
-      title: "DevOps & Systems",
+      title: "Database & Infrastructure",
       icon: <Server className="h-5 w-5 text-amber-700" />,
       skills: [
+        { name: "SQL / DB Management", level: "Expert", percentage: 95 },
+        { name: "Server Admin & Monitoring", level: "Expert", percentage: 92 },
         { name: "Microsoft Azure", level: "Advanced", percentage: 85 },
-        { name: "Server Admin", level: "Expert", percentage: 92 },
         { name: "CI/CD Pipelines", level: "Advanced", percentage: 88 },
-        { name: "Database Mgmt", level: "Expert", percentage: 95 },
       ],
     },
     {
-      title: "Strategy & Operations",
+      title: "Core Competencies",
       icon: <Briefcase className="h-5 w-5 text-emerald-700" />,
       skills: [
-        { name: "Team Leadership", level: "Expert", percentage: 90 },
-        { name: "Project Timelines", level: "Expert", percentage: 95 },
-        { name: "Security & Compliance", level: "Expert", percentage: 92 },
+        { name: "SDLC Management", level: "Expert", percentage: 90 },
+        { name: "Enterprise App Portfolio", level: "Expert", percentage: 95 },
+        { name: "ERP Migration & Decomm", level: "Expert", percentage: 92 },
+        { name: "Technical Team Leadership", level: "Expert", percentage: 90 },
+        { name: "System Security & Compliance", level: "Expert", percentage: 92 },
       ],
     },
   ];

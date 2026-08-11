@@ -16,16 +16,16 @@ interface LanguageItem {
 export default function EducationAndLanguages() {
   const educationList: EducationItem[] = [
     {
-      degree: "Bachelor of IT",
+      degree: "Bachelor of Information Technology",
       institution: "Gunadarma University",
       period: "2012 - 2016",
-      location: "Depok, ID"
+      location: "Depok, Indonesia"
     },
     {
-      degree: "Vocational High School (Computer & Network)",
+      degree: "Vocational High School – Computer & Network Engineering",
       institution: "Informatika Bina Generasi",
       period: "2008 - 2011",
-      location: "Bogor, ID"
+      location: "Bogor, Indonesia"
     }
   ];
 
@@ -37,8 +37,8 @@ export default function EducationAndLanguages() {
     },
     {
       name: "English",
-      proficiency: "Intermediate",
-      percentage: 70
+      proficiency: "Advanced",
+      percentage: 90
     }
   ];
 
