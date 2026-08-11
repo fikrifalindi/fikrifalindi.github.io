@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Profile from './components/Profile';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
+import Portfolio from './components/Portfolio';
 import EducationAndLanguages from './components/EducationAndLanguages';
 import References from './components/References';
 import Contact from './components/Contact';
@@ -90,6 +91,7 @@ export default function App() {
         <Profile />
         <Skills />
         <Experience />
+        <Portfolio />
         <EducationAndLanguages />
         <References />
         <Contact />

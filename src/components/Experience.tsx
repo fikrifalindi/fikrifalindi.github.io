@@ -2,18 +2,13 @@ import { useState, type MouseEvent } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface SubPillarItem {
-  title: string;
-  items: string[];
-}
-
 interface ExperienceItem {
   id: number;
   company: string;
   role: string;
   period: string;
   location: string;
-  points: (string | SubPillarItem)[];
+  points: string[];
   isCurrent?: boolean;
 }
 
@@ -29,16 +24,7 @@ export default function Experience() {
       points: [
         "Direct full software development lifecycle (SDLC) and deployment pipelines for a portfolio of 35+ proprietary enterprise applications spanning Supply Chain, Logistics, Plant Operations, Finance, and Commercial functions.",
         "Served as Lead Developer for critical modules using Laravel, ReactJS, ASP, and Power Platform, stepping in during resource constraints to guarantee 100% on-time project milestone delivery.",
-        {
-          title: "Architected and managed 35+ enterprise applications across 5 core business pillars:",
-          items: [
-            "Supply Chain, Logistics & Warehouse: ASN (Auto Shipping Notice), Barcode Pallet System, Freight System (FC3), Optimus Logistics Vendor Appointment, Receiver Ticket Print.",
-            "Finance, Procurement & Accounting: Advance & Exception Payment, Extend Invoice ToP Customer, Bank Transfer Encryption, Blackline Data Export Wizard, Closing Checklist, Exchange Rate Automation, Import of Goods Notification, MJ Workflow, Sentosa System, Vendor SRM.",
-            "Commercial & Sales Operations: B2B RMS, OOH Workflow, Optimus Sales Recognition, Export System, Credit Note (CN) Online (Indonesia & SSEA).",
-            "Manufacturing, Plant Operations & QC: Line Performance System, Manufacturing Recording, Item Master Automation, Sparepart Management (CMMS), Customer Product Complaint, BAPBS HB/DC + Plant, Copacker Claim, Import Claim, SJPBB (Sales of Scrap), Vendor Master Automation, PO Contract & Workflow.",
-            "Enterprise Workflow & Administration: User Access Request, Indonesia Webcenter."
-          ]
-        },
+        "Architected and managed a portfolio of 35+ enterprise applications across 5 core business pillars (detailed in the Portfolio section below).",
         "Managed business continuity, legacy data transitions, and structured decommissioning of multiple internal applications following a major corporate ERP migration.",
         "Oversee comprehensive server administration and proactive performance monitoring, optimizing server resource utilization, enforcing security protocols, and maintaining maximum uptime.",
         "Administer enterprise-grade database systems, enforcing data integrity, query performance optimization, and strict security compliance across all active platforms."
@@ -187,42 +173,13 @@ export default function Experience() {
                               transition={{ duration: 0.3, ease: 'easeInOut' }}
                               className="overflow-hidden"
                             >
-                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-3.5 text-stone-500 text-xs leading-relaxed">
-                                {exp.points.map((pt, pIdx) => {
-                                  if (typeof pt === 'string') {
-                                    return (
-                                      <li key={pIdx} className="flex items-start">
-                                        <span className="mr-2 text-emerald-700 font-bold shrink-0">•</span>
-                                        <span>{pt}</span>
-                                      </li>
-                                    );
-                                  } else {
-                                    return (
-                                      <li key={pIdx} className="space-y-2 mt-2 pt-2 border-t border-dashed border-stone-200/80">
-                                        <div className="font-bold text-stone-850 flex items-center">
-                                          <span className="mr-2 text-emerald-700">•</span>
-                                          {pt.title}
-                                        </div>
-                                        <ul className="pl-5 space-y-1.5">
-                                          {pt.items.map((sub, sIdx) => {
-                                            const parts = sub.split(':');
-                                            const prefix = parts[0];
-                                            const rest = parts.slice(1).join(':');
-                                            return (
-                                              <li key={sIdx} className="flex items-start">
-                                                <span className="mr-2 text-amber-600 font-bold shrink-0">○</span>
-                                                <span className="text-stone-600">
-                                                  <strong className="text-stone-800 font-semibold">{prefix}:</strong>
-                                                  {rest}
-                                                </span>
-                                              </li>
-                                            );
-                                          })}
-                                        </ul>
-                                      </li>
-                                    );
-                                  }
-                                })}
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => (
+                                  <li key={pIdx} className="flex items-start">
+                                    <span className="mr-2 text-emerald-700 font-bold shrink-0">•</span>
+                                    <span>{pt}</span>
+                                  </li>
+                                ))}
                               </ul>
                             </motion.div>
                           )}
@@ -264,42 +221,13 @@ export default function Experience() {
                               transition={{ duration: 0.3, ease: 'easeInOut' }}
                               className="overflow-hidden"
                             >
-                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-3.5 text-stone-500 text-xs leading-relaxed">
-                                {exp.points.map((pt, pIdx) => {
-                                  if (typeof pt === 'string') {
-                                    return (
-                                      <li key={pIdx} className="flex items-start">
-                                        <span className="mr-2 text-amber-700 font-bold shrink-0">•</span>
-                                        <span>{pt}</span>
-                                      </li>
-                                    );
-                                  } else {
-                                    return (
-                                      <li key={pIdx} className="space-y-2 mt-2 pt-2 border-t border-dashed border-stone-200/80">
-                                        <div className="font-bold text-stone-850 flex items-center">
-                                          <span className="mr-2 text-amber-700">•</span>
-                                          {pt.title}
-                                        </div>
-                                        <ul className="pl-5 space-y-1.5">
-                                          {pt.items.map((sub, sIdx) => {
-                                            const parts = sub.split(':');
-                                            const prefix = parts[0];
-                                            const rest = parts.slice(1).join(':');
-                                            return (
-                                              <li key={sIdx} className="flex items-start">
-                                                <span className="mr-2 text-amber-600 font-bold shrink-0">○</span>
-                                                <span className="text-stone-600">
-                                                  <strong className="text-stone-800 font-semibold">{prefix}:</strong>
-                                                  {rest}
-                                                </span>
-                                              </li>
-                                            );
-                                          })}
-                                        </ul>
-                                      </li>
-                                    );
-                                  }
-                                })}
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => (
+                                  <li key={pIdx} className="flex items-start">
+                                    <span className="mr-2 text-amber-700 font-bold shrink-0">•</span>
+                                    <span>{pt}</span>
+                                  </li>
+                                ))}
                               </ul>
                             </motion.div>
                           )}

@@ -136,7 +136,7 @@ Integrated everything into:
    - Re-incorporated the geometric workspace wall and green grass accents as background elements.
    - Copied the updated asset to the public folder:
      ```powershell
-     Copy-Item "C:\Users\OWQ0084\.gemini\antigravity-ide\brain\025ed09e-b45a-483a-bdc8-8540c0d800e4\profile_avatar_original_styled_1784190094873.png" "c:\xampp\portofolio\public\profile_avatar.png" -Force
+     Copy-Item "C:\Users\OWQ0084\.gemini\antigravity-ide\brain\025ed09e-b45a-490094873.png" "c:\xampp\portofolio\public\profile_avatar.png" -Force
      ```
 
 ---
@@ -189,13 +189,28 @@ Integrated everything into:
 
 1. **Bento Grid Refactoring**:
    Organized sections into a responsive 12-column Bento Grid system using a reusable glassmorphic `BentoCard` wrapper.
-   - Split `Hero` details into an `IntroCard` (8 cols) and `ProfileCard` (4 cols).
-   - Split `Profile` info into an `AboutCard` (5 cols) and `MetricsCard` (3 cols).
-   - Wrapped `References` in `ReferencesCard` (4 cols) to complete Row 2.
-   - Configured `SkillsCard` (8 cols) and consolidated `EducationAndLanguagesCard` (4 cols) to form Row 3.
-   - Positioned scrollable `ExperienceCard` (7 cols) and message submission `ContactCard` (5 cols) in Row 4.
 
 2. **Warm Minimalist Color Scheme transition**:
    - Replaced deep dark palette settings in `src/index.css` with a premium light-theme alabaster base background (`#fcfcfb`), transparent white glass cards, soft stone borders, and dark charcoal typography.
    - Synced color accents across all cards and items using forest green (`#166534`) and warm amber gold (`#b45309`).
    - Adapted background gradients, vector lines, and floating 3D shape styles in `src/App.tsx` to match the warm off-white and green/gold highlights.
+
+---
+
+## Phase 11: Revert Layout to Sequential (Keep Warm Colors)
+
+1. **Layout Restoration**:
+   Reverted `src/App.tsx` and all components from the Bento Grid structure back to the spacious sequential layout (vertical sections, alternating timeline cards).
+
+---
+
+## Phase 12: New CV Import Integration
+
+1. **Experience Nested Bullet points**:
+   Modified [src/components/Experience.tsx](file:///c:/xampp/portofolio/src/components/Experience.tsx) to support sub-timeline entries. Included detailed listing of 35+ enterprise applications segmented across 5 core business pillars (Supply Chain, Finance, Commercial, Manufacturing, and Enterprise Workflow) for PT Heinz ABC Indonesia.
+
+2. **Skills Matrix Refresh**:
+   Updated [src/components/Skills.tsx](file:///c:/xampp/portofolio/src/components/Skills.tsx) to sync categories with the new CV skills parameters (Programming & Frameworks, Database & Infrastructure, Core Competencies).
+
+3. **Fluency Upgrade & Locations**:
+   Updated [src/components/EducationAndLanguages.tsx](file:///c:/xampp/portofolio/src/components/EducationAndLanguages.tsx) to upgrade English proficiency to "Advanced (90%)" and added location tags next to educational milestones.
