@@ -17,7 +17,7 @@ export default function SkillsCard() {
   const categories: SkillCategory[] = [
     {
       title: "Software Development",
-      icon: <Code2 className="h-4 w-4 text-violet-400" />,
+      icon: <Code2 className="h-4 w-4 text-emerald-700" />,
       skills: [
         { name: "Laravel", level: "Expert", percentage: 95 },
         { name: "ReactJS", level: "Advanced", percentage: 90 },
@@ -28,7 +28,7 @@ export default function SkillsCard() {
     },
     {
       title: "DevOps & Systems",
-      icon: <Server className="h-4 w-4 text-cyan-400" />,
+      icon: <Server className="h-4 w-4 text-amber-700" />,
       skills: [
         { name: "Microsoft Azure", level: "Advanced", percentage: 85 },
         { name: "Server Admin", level: "Expert", percentage: 92 },
@@ -38,7 +38,7 @@ export default function SkillsCard() {
     },
     {
       title: "Strategy & Operations",
-      icon: <Briefcase className="h-4 w-4 text-pink-400" />,
+      icon: <Briefcase className="h-4 w-4 text-emerald-700" />,
       skills: [
         { name: "Team Leadership", level: "Expert", percentage: 90 },
         { name: "Project Timelines", level: "Expert", percentage: 95 },
@@ -50,19 +50,19 @@ export default function SkillsCard() {
   return (
     <BentoCard className="col-span-1 lg:col-span-8 min-h-[420px] flex flex-col justify-between" id="skills">
       <div>
-        <h3 className="text-xl font-bold text-white mb-2 tracking-wide">Skills & Expertise</h3>
-        <p className="text-slate-400 text-xs sm:text-sm mb-6">
+        <h3 className="text-xl font-bold text-stone-900 mb-2 tracking-wide">Skills & Expertise</h3>
+        <p className="text-stone-500 text-xs sm:text-sm mb-6">
           A comprehensive overview of my technical toolkit, software engineering capabilities, and project execution skills.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((category, idx) => (
             <div key={idx} className="space-y-4">
-              <div className="flex items-center space-x-2 border-b border-slate-800/60 pb-2">
-                <div className="p-1.5 rounded-lg bg-slate-900 border border-white/5 shrink-0">
+              <div className="flex items-center space-x-2 border-b border-stone-200/50 pb-2">
+                <div className="p-1.5 rounded-lg bg-stone-50 border border-stone-200/50 shrink-0">
                   {category.icon}
                 </div>
-                <h4 className="text-xs sm:text-sm font-bold text-white tracking-wide truncate">
+                <h4 className="text-xs sm:text-sm font-bold text-stone-900 tracking-wide truncate">
                   {category.title}
                 </h4>
               </div>
@@ -70,14 +70,14 @@ export default function SkillsCard() {
               <div className="space-y-3">
                 {category.skills.map((skill, sIdx) => (
                   <div key={sIdx} className="space-y-1">
-                    <div className="flex justify-between text-[10px] sm:text-xs font-semibold text-slate-300">
+                    <div className="flex justify-between text-[10px] sm:text-xs font-semibold text-stone-700">
                       <span>{skill.name}</span>
-                      <span className="text-cyan-400">{skill.level}</span>
+                      <span className="text-emerald-700">{skill.level}</span>
                     </div>
                     {/* Progress Bar */}
-                    <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden border border-white/5">
+                    <div className="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden border border-stone-200/50">
                       <div
-                        className="h-full bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full"
+                        className="h-full bg-gradient-to-r from-emerald-700 to-amber-600 rounded-full"
                         style={{ width: `${skill.percentage}%` }}
                       ></div>
                     </div>
@@ -89,14 +89,14 @@ export default function SkillsCard() {
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-slate-800/40 flex flex-wrap gap-1.5">
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-2 self-center">Competencies:</span>
+      <div className="mt-6 pt-4 border-t border-stone-200/50 flex flex-wrap gap-1.5">
+        <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider mr-2 self-center">Competencies:</span>
         {categories.flatMap(c => c.skills).slice(0, 7).map((skill, sIdx) => (
           <span
             key={sIdx}
-            className="inline-flex items-center text-[9px] font-bold text-slate-300 bg-slate-950/60 px-2 py-0.5 rounded border border-white/5 uppercase"
+            className="inline-flex items-center text-[9px] font-bold text-stone-700 bg-stone-50/60 px-2 py-0.5 rounded border border-stone-200/60 uppercase"
           >
-            <CheckCircle2 className="h-2.5 w-2.5 text-cyan-500 mr-1" />
+            <CheckCircle2 className="h-2.5 w-2.5 text-emerald-700 mr-1" />
             {skill.name}
           </span>
         ))}

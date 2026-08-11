@@ -12,18 +12,16 @@ export default function Navbar() {
 
   const navItems: NavItem[] = [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '#profile' },
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    { label: 'References', href: '#references' },
     { label: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => document.querySelector(item.href));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120;
 
       sections.forEach((section) => {
         if (!section) return;
@@ -47,10 +45,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="#home" className="flex items-center space-x-2 group">
-              <span className="h-8 w-8 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-violet-500/20 group-hover:scale-105 transition-transform">
+              <span className="h-8 w-8 rounded-lg bg-gradient-to-r from-emerald-700 to-amber-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
                 F
               </span>
-              <span className="text-white font-semibold text-lg tracking-wider group-hover:text-cyan-400 transition-colors">
+              <span className="text-stone-800 font-semibold text-lg tracking-wider group-hover:text-emerald-700 transition-colors">
                 FIKRI FALINDI
               </span>
             </a>
@@ -62,10 +60,10 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                   activeSection === item.href.slice(1)
-                    ? 'text-cyan-400 bg-white/5 border border-cyan-500/20'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                    ? 'text-emerald-700 bg-stone-100/80 border border-emerald-700/20'
+                    : 'text-stone-500 hover:text-stone-900 hover:bg-stone-50/50'
                 }`}
               >
                 {item.label}
@@ -73,7 +71,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
-              className="ml-4 px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white font-medium text-sm transition-all shadow-md hover:shadow-cyan-500/20 hover:scale-[1.02]"
+              className="ml-4 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-700 to-amber-700 hover:from-emerald-600 hover:to-amber-600 text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:scale-[1.02]"
             >
               Hire Me
             </a>
@@ -83,10 +81,10 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-white/5 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-stone-500 hover:text-stone-900 hover:bg-stone-50 focus:outline-none"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -94,17 +92,17 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="md:hidden glass border-t border-white/5">
+        <div className="md:hidden bg-white/95 border-t border-stone-200/50 backdrop-blur-xl">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-all ${
+                className={`block px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wider transition-all ${
                   activeSection === item.href.slice(1)
-                    ? 'text-cyan-400 bg-white/5 font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                    ? 'text-emerald-700 bg-stone-50 font-bold'
+                    : 'text-stone-500 hover:text-stone-900 hover:bg-stone-50'
                 }`}
               >
                 {item.label}
@@ -113,7 +111,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center mt-4 px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 text-white font-medium transition-all"
+              className="block w-full text-center mt-4 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-700 to-amber-700 text-white font-semibold text-xs uppercase tracking-wider transition-all"
             >
               Hire Me
             </a>
