@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar';
-import { IntroCard, ProfileCard } from './components/Hero';
-import { AboutCard, MetricsCard } from './components/Profile';
-import SkillsCard from './components/Skills';
-import ExperienceCard from './components/Experience';
-import EducationAndLanguagesCard from './components/EducationAndLanguages';
-import ReferencesCard from './components/References';
-import ContactCard from './components/Contact';
+import Hero from './components/Hero';
+import Profile from './components/Profile';
+import Skills from './components/Skills';
+import Experience from './components/Experience';
+import EducationAndLanguages from './components/EducationAndLanguages';
+import References from './components/References';
+import Contact from './components/Contact';
 
 export default function App() {
   return (
@@ -84,34 +84,15 @@ export default function App() {
       {/* Universal Floating Navbar */}
       <Navbar />
 
-      {/* Main Bento Grid layout */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-6">
-        
-        {/* Row 1: Intro Card (8) & Profile Card (4) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <IntroCard />
-          <ProfileCard />
-        </div>
-
-        {/* Row 2: About Me (5) & Professional Metrics (3) & Reference (4) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <AboutCard />
-          <MetricsCard />
-          <ReferencesCard />
-        </div>
-
-        {/* Row 3: Skills & Competencies (8) & Credentials (4) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <SkillsCard />
-          <EducationAndLanguagesCard />
-        </div>
-
-        {/* Row 4: Timeline Experience (7) & Contact message form (5) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <ExperienceCard />
-          <ContactCard />
-        </div>
-
+      {/* Main Sections rendered sequentially */}
+      <main className="relative z-10">
+        <Hero />
+        <Profile />
+        <Skills />
+        <Experience />
+        <EducationAndLanguages />
+        <References />
+        <Contact />
       </main>
     </div>
   );

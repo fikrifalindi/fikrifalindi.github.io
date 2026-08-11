@@ -1,7 +1,6 @@
 import { useState, type MouseEvent } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import BentoCard from './BentoCard';
 
 interface ExperienceItem {
   id: number;
@@ -12,7 +11,7 @@ interface ExperienceItem {
   isCurrent?: boolean;
 }
 
-export default function ExperienceCard() {
+export default function Experience() {
   const experiences: ExperienceItem[] = [
     {
       id: 1,
@@ -46,8 +45,8 @@ export default function ExperienceCard() {
       role: "Web Backend Developer (Bootcamp)",
       period: "Oct '16 - Nov '16",
       points: [
-        "Developed a custom Content Management System (CMS) using CodeIgniter to dynamically manage and update mobile application content.",
-        "Engineered administrative interfaces for real-time content synchronization between the web CMS and mobile environment.",
+        "Developed a custom Content Management System (CMS) using CodeIgniter to dynamically manage and update mobile application content, ensuring a streamlined administrative workflow.",
+        "Engineered administrative interfaces that allowed for real-time content synchronization between the web-based CMS and the mobile app environment.",
         "Collaborated within an agile development team to build and refine core website features, focusing on modular code.",
         "Optimized back-end logic to handle content delivery, ensuring high availability and fast response times."
       ]
@@ -58,8 +57,8 @@ export default function ExperienceCard() {
       role: "IT Support",
       period: "2011 - 2012",
       points: [
-        "Maintained high-availability game servers through rigorous daily monitoring and scheduled maintenance protocols.",
-        "Coordinated on-site technical support for major company events, handling everything from hardware assembly to network troubleshooting."
+        "Maintained high-availability game servers through rigorous daily monitoring and scheduled maintenance protocols to ensure an optimal gaming experience for users.",
+        "Coordinated on-site technical support for major company events, handling everything from hardware assembly to complex network troubleshooting."
       ]
     },
     {
@@ -84,7 +83,7 @@ export default function ExperienceCard() {
 
     if (!isCurrentlyExpanded) {
       const cardElement = event.currentTarget;
-      // Scroll to the card element offset relative to the page
+      // Wait for layout shifts (300ms Framer collapse) to finish before measuring
       setTimeout(() => {
         const rect = cardElement.getBoundingClientRect();
         const offsetTop = window.scrollY + rect.top - 90; // Adjusting for sticky header height
@@ -97,82 +96,146 @@ export default function ExperienceCard() {
   };
 
   return (
-    <BentoCard className="col-span-1 lg:col-span-7 min-h-[480px] flex flex-col" id="experience">
-      <h3 className="text-xl font-bold text-stone-900 mb-2 tracking-wide">Work Experience</h3>
-      <p className="text-stone-500 text-xs sm:text-sm mb-6">
-        A chronicle of my professional positions, from early support internships to enterprise system engineering.
-      </p>
+    <section id="experience" className="py-20 relative overflow-hidden bg-stone-50/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+            Work <span className="bg-gradient-to-r from-emerald-800 to-amber-700 bg-clip-text text-transparent">Experience</span>
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-emerald-700 to-amber-600 mx-auto mt-4 rounded-full"></div>
+          <p className="text-stone-500 mt-6 text-base sm:text-lg">
+            A chronicle of my professional positions, from early support internships to enterprise system engineering.
+          </p>
+        </div>
 
-      {/* Scrollable Timeline Area */}
-      <div className="flex-1 overflow-y-auto pr-1 max-h-[380px] relative space-y-8 scrollbar-thin">
-        {/* Vertical timeline line */}
-        <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-stone-200 pointer-events-none"></div>
+        {/* Timeline Layout */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Vertical Center Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-stone-200 -translate-x-1/2"></div>
 
-        {experiences.map((exp) => {
-          const isExpanded = expandedId === exp.id;
+          {/* Experience list */}
+          <div className="space-y-12">
+            {experiences.map((exp, idx) => {
+              const isEven = idx % 2 === 0;
+              const isExpanded = expandedId === exp.id;
 
-          return (
-            <div key={exp.id} className="relative pl-8">
-              {/* Glowing Node Point */}
-              <div className="absolute left-1.5 top-2.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-stone-300 flex items-center justify-center -translate-x-1/2 z-20 shadow-sm">
-                <div className={`w-1.5 h-1.5 rounded-full ${exp.isCurrent ? 'bg-emerald-600 animate-pulse' : 'bg-amber-500'}`}></div>
-              </div>
-
-              {/* Card Container */}
-              <motion.div
-                layout
-                onClick={(e) => toggleExpand(exp.id, e)}
-                className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                  exp.isCurrent
-                    ? 'bg-emerald-50/20 border-emerald-700/20 shadow-sm shadow-emerald-700/2'
-                    : 'bg-stone-50/30 border border-stone-200/50 hover:border-stone-300/80'
-                }`}
-              >
-                <div className="flex justify-between items-start gap-2">
-                  <div>
-                    <span className={`inline-flex items-center text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-1.5 ${
-                      exp.isCurrent 
-                        ? 'text-emerald-700 bg-emerald-100' 
-                        : 'text-amber-700 bg-amber-100'
-                    }`}>
-                      {exp.period}
-                    </span>
-                    <h4 className="text-sm sm:text-base font-bold text-stone-900 leading-snug">
-                      {exp.company}
-                    </h4>
-                    <p className="text-xs text-stone-600 font-medium mt-0.5">{exp.role}</p>
+              return (
+                <div key={exp.id} className="relative flex flex-col md:flex-row items-start md:items-center">
+                  
+                  {/* Glowing Node Point */}
+                  <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-white border border-stone-300 flex items-center justify-center -translate-x-1/2 z-20 shadow-sm transition-transform">
+                    <div className={`w-3.5 h-3.5 rounded-full ${exp.isCurrent ? 'bg-emerald-600 animate-pulse' : 'bg-amber-500'}`}></div>
                   </div>
-                  <button className="text-stone-500 hover:text-stone-800 p-1 rounded bg-white border border-stone-200/80 shadow-sm shrink-0">
-                    {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
-                  </button>
-                </div>
 
-                {/* Collapsible Details */}
-                <AnimatePresence initial={false}>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <ul className="mt-3 pt-3 border-t border-stone-200/60 space-y-1.5 text-stone-500 text-xs leading-relaxed">
-                        {exp.points.map((pt, pIdx) => (
-                          <li key={pIdx} className="flex items-start">
-                            <span className={`mr-2 font-bold shrink-0 ${exp.isCurrent ? 'text-emerald-700' : 'text-amber-700'}`}>•</span>
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </div>
-          );
-        })}
+                  {/* Left Side Column - Contains Even Items in 1-based order (idx 0, 2, 4) */}
+                  <div className="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 flex justify-start md:justify-end md:order-1">
+                    {isEven && (
+                      <motion.div
+                        layout
+                        onClick={(e) => toggleExpand(exp.id, e)}
+                        className={`w-full max-w-md p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                          exp.isCurrent
+                            ? 'bg-emerald-50/20 border-emerald-700/20 shadow-sm shadow-emerald-700/2'
+                            : 'glass border-stone-200/50 hover:border-stone-300/80'
+                        }`}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <span className="inline-flex items-center text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full mb-2 uppercase tracking-wide">
+                              {exp.period}
+                            </span>
+                            <h3 className="text-lg font-bold text-stone-900 group-hover:text-emerald-700 transition-colors">
+                              {exp.company}
+                            </h3>
+                            <p className="text-stone-600 text-xs font-semibold mt-0.5">{exp.role}</p>
+                          </div>
+                          <button className="text-stone-500 hover:text-stone-800 p-1.5 rounded bg-white border border-stone-200/80 shadow-sm shrink-0">
+                            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                          </button>
+                        </div>
+
+                        {/* Animated Dropdown list points */}
+                        <AnimatePresence initial={false}>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: 'easeInOut' }}
+                              className="overflow-hidden"
+                            >
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => (
+                                  <li key={pIdx} className="flex items-start">
+                                    <span className="mr-2 text-emerald-700 font-bold">•</span>
+                                    <span>{pt}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* Right Side Column - Contains Odd Items in 1-based order (idx 1, 3) */}
+                  <div className="w-full md:w-1/2 pl-12 md:pl-12 flex justify-start md:order-2">
+                    {!isEven && (
+                      <motion.div
+                        layout
+                        onClick={(e) => toggleExpand(exp.id, e)}
+                        className="w-full max-w-md p-6 rounded-2xl border glass border-stone-200/50 hover:border-stone-300/80 transition-all duration-300 cursor-pointer"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <span className="inline-flex items-center text-[10px] font-bold text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full mb-2 uppercase tracking-wide">
+                              {exp.period}
+                            </span>
+                            <h3 className="text-lg font-bold text-stone-900 group-hover:text-amber-700 transition-colors">
+                              {exp.company}
+                            </h3>
+                            <p className="text-stone-600 text-xs font-semibold mt-0.5">{exp.role}</p>
+                          </div>
+                          <button className="text-stone-500 hover:text-stone-800 p-1.5 rounded bg-white border border-stone-200/80 shadow-sm shrink-0">
+                            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                          </button>
+                        </div>
+
+                        {/* Animated Dropdown list points */}
+                        <AnimatePresence initial={false}>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: 'easeInOut' }}
+                              className="overflow-hidden"
+                            >
+                              <ul className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-stone-500 text-xs leading-relaxed">
+                                {exp.points.map((pt, pIdx) => (
+                                  <li key={pIdx} className="flex items-start">
+                                    <span className="mr-2 text-amber-700 font-bold">•</span>
+                                    <span>{pt}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    )}
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
-    </BentoCard>
+    </section>
   );
 }
