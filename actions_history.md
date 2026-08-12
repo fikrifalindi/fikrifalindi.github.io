@@ -241,3 +241,10 @@ Integrated everything into:
 
 3. **Color-Matched Monogram Refinement**:
    Re-generated the monogram logo using the `generate_image` tool to replace the cyan background with a transparent/off-white background and recolor the double-F lines with the forest green and amber gold gradient, perfectly matching the Warm Minimalist color palette.
+
+---
+
+## Phase 15: Navbar Scroll Link Fix
+
+1. **About Target Anchor Fix**:
+   Updated the "About" menu navigation target link in [src/components/Navbar.tsx](file:///c:/xampp/portofolio/src/components/Navbar.tsx) from `#profile` to `#about` to match the target id `about` in the Profile section component.
